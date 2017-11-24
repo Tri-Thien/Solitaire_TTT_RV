@@ -26,6 +26,7 @@ Entrer votre pseudo  <input type="text" name="pseudo"/>
 <input type="submit" name="soumettre" value="envoyer"/>
 </form>
 <br/>
+<p> BONJOUR </p>
 <br/>
 <?php
 }
