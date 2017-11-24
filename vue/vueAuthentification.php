@@ -20,6 +20,7 @@ header("Content-type: text/html; charset=utf-8");
 
   Entrer votre pseudo  <input type="text" name="pseudo"/>
   </br>
+  </br>
   Entrer votre mdp <input type="password" name ="mdp"/>
   </br>
   <input type="submit" name="soumettre" value="envoyer"/>
