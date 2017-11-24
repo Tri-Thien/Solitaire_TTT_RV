@@ -1,29 +1,32 @@
 <?php
-require_once PATH_VUE."/vue.php";
-require_once PATH_MODELE."/modele.php";
+require_once PATH_VUE."/*";
+require_once PATH_MODELE."/*";
 
 
 class ControleurAuthentification{
 
-private $vue;
-private $modele;
+private $vueAuthentification;
+private $vueJeu;
+private $modeleBD;
+private $modelePlateau;
 
 
 function __construct(){
-$this->vue=new Vue();
-$this->modele=new Modele();
-
-
+$this->vueAuthentification=new VueAuthentification();
+$this->vueJeu=new VueJeu();
+$this->modeleBD=new ModeleBD();
+$this->modelePlateau=new ModelePlateau();
 }
 
 function accueil(){
-$this->vue->demandePseudo();
+$this->vueAuthentification->demandePseudo();
 }
 
-function verifiePseudo($pseudo){
-  if ($this->modele->exists($pseudo)) {
+function verifiePseudo($pseudo, $mdp){
+  if (true) {
     $_SESSION["pseudo"] = $pseudo;
-    $this->vue->salon( $this->modele->get10RecentMessage());
+    $this->modelePlateau->initialiserPlateau();
+    $this->vueJeu->AffichageJeu();
   }
   else{
     $this->vue->demandePseudo();
