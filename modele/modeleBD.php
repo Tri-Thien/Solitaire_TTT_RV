@@ -27,15 +27,15 @@ class TableAccesException extends MonException{
 
 // Classe qui gère les accès à la base de données
 
-class Modele{
+class ModeleBD{
 private $connexion;
 
 // Constructeur de la classe
 
   public function __construct(){
-   try{  
-   
-    
+   try{
+
+
     $chaine="mysql:host=".HOST.";dbname=".BD;
     $this->connexion = new PDO($chaine,LOGIN,PASSWORD);
     $this->connexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -64,8 +64,8 @@ public function deconnexion(){
 // si un problème est rencontré, une exception de type TableAccesException est levée
 
 public function getPseudos(){
- try{  
-	
+ try{
+
 $statement=$this->connexion->query("SELECT pseudo from pseudonyme;");
 
 while($ligne=$statement->fetch()){
@@ -75,7 +75,7 @@ return($result);
 }
 catch(PDOException $e){
     throw new TableAccesException("problème avec la table pseudonyme");
-  }  
+  }
 }
 
 
@@ -86,7 +86,7 @@ catch(PDOException $e){
 // post-condition retourne vrai si le pseudo existe sinon faux
 // si un problème est rencontré, une exception de type TableAccesException est levée
 public function exists($pseudo){
-try{  
+try{
 	$statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
 	$statement->bindParam(1, $pseudoParam);
 	$pseudoParam=$pseudo;
@@ -114,25 +114,25 @@ catch(PDOException $e){
 // precondition: le pseudo existe dans la table pseudonyme
 // post-condition: le message est ajouté dans la table salon
 // si un problème est rencontré, une exception de type TableAccesException est levée
-		  
+
 public function majSalon($pseudo,$message){
-      try{ 
-      
+      try{
+
       $statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
 	$statement->bindParam(1, $pseudoParam);
 	$pseudoParam=$pseudo;
 	$statement->execute();
-	$result=$statement->fetch(PDO::FETCH_ASSOC); 
+	$result=$statement->fetch(PDO::FETCH_ASSOC);
 	$statement = $this->connexion->prepare("INSERT INTO salon (idpseudo, message) VALUES (?,?);");
 	$statement->bindParam(1, $result['id']);
 	$statement->bindParam(2, $message);
 	$statement->execute();
-	
+
 	}
     catch(PDOException $e){
     $this->deconnexion();
     throw new TableAccesException("problème avec la table salon");
-    }   
+    }
 }
 
 
@@ -150,12 +150,12 @@ public function majSalon($pseudo,$message){
 
 public function get10RecentMessage(){
 
-try{	
+try{
 $statement=$this->connexion->query("SELECT pseudonyme.pseudo ,salon.message FROM salon, pseudonyme where salon.idpseudo=pseudonyme.id ORDER BY salon.id DESC LIMIT 0, 10;");
-	
+
 	return($statement->fetchAll(PDO::FETCH_CLASS, "Message"));
-	
-    } 
+
+    }
   catch(PDOException $e){
     $this->deconnexion();
     throw new TableAccesException("problème avec la table salon");

@@ -15,7 +15,6 @@ header("Content-type: text/html; charset=utf-8");
 </head>
 <body>
 
-  <form method="post" action="index.php">
 
   <h1> Jeu de solitaire </h1>
 
@@ -23,14 +22,14 @@ header("Content-type: text/html; charset=utf-8");
 
   for ($i=0; $i < 7; $i++) {
     for ($j=0; $j < 7 ; $j++) {
-      if ( ($_SESSION['plateau'])[$i][$j] == 1 ) {
-        ?>  <img src="./img/tofu.jpg" alt="tofu" height="50" width="50">  <?php
+      if ( $_SESSION['plateau'][$i][$j] == 1 ) {
+        ?>  <img src="img/tofu.jpg" alt="tofu" height="50" width="50"/>  <?php
       }
-      else if ( ($_SESSION['plateau'])[$i][$j] == 0 ) {
-        ?>  <img src="./img/graine.jpg" alt="tofu" height="50" width="50">  <?php
+      else if ( $_SESSION['plateau'][$i][$j] == 0 ) {
+        ?>  <img src="img/graine.png" alt="tofu" height="50" width="50"/>  <?php
       }
       else {
-        ?>  <img src="./img/blanc.jpg" alt="blanc" height="50" width="50">  <?php
+        ?>  <img src="img/blanc.png" alt="blanc" height="50" width="50"/>  <?php
       }
     }
     echo "<br/>";
@@ -38,7 +37,6 @@ header("Content-type: text/html; charset=utf-8");
 
    ?>
 
-  </form>
 
 </body>
 </html>
