@@ -1,6 +1,8 @@
 <?php
-require_once PATH_VUE."/*";
-require_once PATH_MODELE."/*";
+require_once PATH_VUE."/vueJeu.php";
+require_once PATH_VUE."/vueAuthentification.php";
+require_once PATH_MODELE."/modelePlateau.php";
+require_once PATH_MODELE."/modeleBD.php";
 
 
 class ControleurAuthentification{

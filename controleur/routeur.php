@@ -18,7 +18,7 @@ class Routeur {
   public function routerRequete() {
 
     if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
-      $this->ctrlAuthentification->authentifie($_POST["pseudo"], $_POST["mdp"]);
+      $this->ctrlAuthentification->verifiePseudo($_POST["pseudo"], $_POST["mdp"]);
      }
     /*else if (isset($_POST[""])) {
      $this->ctrl;

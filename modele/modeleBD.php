@@ -27,7 +27,7 @@ class TableAccesException extends MonException{
 
 // Classe qui gère les accès à la base de données
 
-class Modele{
+class ModeleBD{
 private $connexion;
 
 // Constructeur de la classe
