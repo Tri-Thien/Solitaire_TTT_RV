@@ -24,5 +24,16 @@ function enleverPion($x, $y){
   }
 }
 
+function deplacerPion($xi, $yi, $xf, $yf){
+  if ($this->modelePlateau->deplacerPion($xi,$yi,$xf,$yf)) {
+    echo "oui";
+    $this->vueJeu->AffichageJeu();
+  }
+  else{
+    echo "non";
+    $this->vueJeu->AffichageJeu();
+  }
+}
+
 
 }
