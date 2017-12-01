@@ -55,8 +55,8 @@ public function deconnexion(){
 }
 
 
-public function verifMdp($pseudo,$mdp){
 
+public function verifMdp($pseudo,$mdp){
       try{
 	$statement = $this->connexion->prepare("select motDePasse from joueurs where pseudo=?;");
 	$statement->bindParam(1, $pseudo);
@@ -73,6 +73,56 @@ public function verifMdp($pseudo,$mdp){
     catch(PDOException $e){
     $this->deconnexion();
     throw new TableAccesException("problème avec la table joueurs");
+    }
+}
+
+
+public function getPartiesJoue($pseudo){
+  try{
+$statement = $this->connexion->prepare("select count(*) from parties where pseudo=?;");
+$statement->bindParam(1, $pseudo);
+$statement->execute();
+$result=$statement->fetch(PDO::FETCH_ASSOC);
+return ($result);
+
+}
+catch(PDOException $e){
+$this->deconnexion();
+throw new TableAccesException("problème avec la table joueurs");
+}
+}
+
+
+public function getPartiesGagne($pseudo){
+  try{
+$statement = $this->connexion->prepare("select sum(partieGagnee) from parties where pseudo=?;");
+$statement->bindParam(1, $pseudo);
+$statement->execute();
+$result=$statement->fetch(PDO::FETCH_ASSOC);
+return ($result);
+
+}
+catch(PDOException $e){
+$this->deconnexion();
+throw new TableAccesException("problème avec la table parties");
+}
+}
+
+
+
+
+public function majParties($pseudo,$resultat){
+
+      try{
+	$statement = $this->connexion->prepare("INSERT INTO parties (pseudo,partieGagnee) VALUES (?,?);");
+	$statement->bindParam(1, $pseudo);
+	$statement->bindParam(2, $resultat);
+	$statement->execute();
+
+	}
+    catch(PDOException $e){
+    $this->deconnexion();
+    throw new TableAccesException("problème avec la table parties);
     }
 }
 

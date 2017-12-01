@@ -2,7 +2,7 @@
 
 class VueResultat{
 
-function affichageResultat(){
+function affichageResultat($tabJoue,$tabGagne){
 session_destroy();
 header("Content-type: text/html; charset=utf-8");
 ?>
@@ -15,17 +15,15 @@ header("Content-type: text/html; charset=utf-8");
 </head>
 <body>
 
-  <form method="post" action="index.php">
 
-  <p>Résultat de la partie.</p>
+  <h2>Résultat de la partie.</h2>
+<br>
+<br>
 
- 
-
-
-
-  <input type="submit" name="retour" value="Retour à la connexion."/>
-
-  </form>
+<?php
+echo "Nombre de parties jouées : ".$tabJoue['count(*)'];
+echo "Nombre de parties gagnées : ".$tabGagne['sum(partieGagnee)'];
+ ?>
 
 </body>
 </html>
