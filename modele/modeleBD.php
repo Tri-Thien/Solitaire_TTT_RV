@@ -1,5 +1,4 @@
 <?php
-require_once PATH_METIER."/Message.php";
 
 
 // Classe generale de definition d'exception
@@ -56,83 +55,24 @@ public function deconnexion(){
 }
 
 
-//A développer
-// utiliser une requête classique
-// méthode qui permet de récupérer les pseudos dans la table pseudo
-// post-condition:
-//retourne un tableau à une dimension qui contient les pseudos.
-// si un problème est rencontré, une exception de type TableAccesException est levée
+public function verifMdp($pseudo,$mdp){
 
-public function getMdp($pseudo){
-
- try{
-
-$statement=$this->connexion->query("SELECT pseudo from pseudonyme;");
-
-while($ligne=$statement->fetch()){
-$result[]=$ligne['pseudo'];
-}
-return($result);
-}
-catch(PDOException $e){
-    throw new TableAccesException("problème avec la table pseudonyme");
-  }
-}
-
-
-
-//A développer
-// utiliser une requête préparée
-//vérifie qu'un pseudo existe dans la table pseudonyme
-// post-condition retourne vrai si le pseudo existe sinon faux
-// si un problème est rencontré, une exception de type TableAccesException est levée
-public function exists($pseudo){
-try{
-	$statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
-	$statement->bindParam(1, $pseudoParam);
-	$pseudoParam=$pseudo;
-	$statement->execute();
-	$result=$statement->fetch(PDO::FETCH_ASSOC);
-
-	if ($result["id"]!=NUll){
-	return true;
-	}
-	else{
-	return false;
-	}
-}
-catch(PDOException $e){
-    $this->deconnexion();
-    throw new TableAccesException("problème avec la table pseudonyme");
-    }
-}
-
-
-
-//A développer
-// utiliser uen requête préparée
-// ajoute un message sur le salon => pseudonyme + message
-// precondition: le pseudo existe dans la table pseudonyme
-// post-condition: le message est ajouté dans la table salon
-// si un problème est rencontré, une exception de type TableAccesException est levée
-
-public function majSalon($pseudo,$message){
       try{
-
-      $statement = $this->connexion->prepare("select id from pseudonyme where pseudo=?;");
-	$statement->bindParam(1, $pseudoParam);
-	$pseudoParam=$pseudo;
+	$statement = $this->connexion->prepare("select motDePasse from joueurs where pseudo=?;");
+	$statement->bindParam(1, $pseudo);
 	$statement->execute();
-	$result=$statement->fetch(PDO::FETCH_ASSOC);
-	$statement = $this->connexion->prepare("INSERT INTO salon (idpseudo, message) VALUES (?,?);");
-	$statement->bindParam(1, $result['id']);
-	$statement->bindParam(2, $message);
-	$statement->execute();
+  $result=$statement->fetch(PDO::FETCH_ASSOC);
 
+  if ($result["motDePasse"]==crypt($mdp,$result["motDePasse"])) {
+    return true;
+  }
+  else{
+    return false;
+  }
 	}
     catch(PDOException $e){
     $this->deconnexion();
-    throw new TableAccesException("problème avec la table salon");
+    throw new TableAccesException("problème avec la table joueurs");
     }
 }
 
