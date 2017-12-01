@@ -24,8 +24,12 @@ class ModelePlateau{
   }
 
   public function enlever1erPion($x, $y){
+    if (($i == 0 || $i == 1 || $i == 5 || $i == 6)&&($j == 0 || $j == 1 || $j == 5 || $j == 6)) {
+      return false;
+    }
     $_SESSION["plateau"][$x][$y] = 0;
     $_SESSION["debut"] = false;
+    return true;
   }
 
   public function deplacerPion($xi, $yi, $xf, $yf){
