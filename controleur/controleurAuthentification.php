@@ -27,6 +27,7 @@ $this->vueAuthentification->demandePseudo();
 function verifiePseudo($pseudo, $mdp){
   if (true) {
     $_SESSION["pseudo"] = $pseudo;
+    $_SESSION["debut"] = true;
     $this->modelePlateau->initialiserPlateau();
     $this->vueJeu->AffichageJeu();
   }

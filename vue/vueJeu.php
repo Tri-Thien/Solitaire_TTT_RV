@@ -38,6 +38,7 @@ header("Content-type: text/html; charset=utf-8");
 
    <!--Si début du jeu, il faut demander à retirer 1 tofu (pion)  -->
 
+	 <?php if ($_SESSION["debut"]) { ?>
    <form method="post" action="index.php">
 
    <br/>
@@ -47,10 +48,10 @@ header("Content-type: text/html; charset=utf-8");
    <input type="submit">
 
    </form>
+	 <?php }
+	 else {?>
 
-
-
-     <form method="post" action="index.php">
+		     <form method="post" action="index.php">
 
      <br/>
      Quel poussin jaune voulez-vous déplacer? : <br/>
@@ -61,6 +62,8 @@ header("Content-type: text/html; charset=utf-8");
      <p> pos X <input type="number" name="pos_X_apres_Deplacer" min="0" max="6"> </p>
      <p> pos Y <input type="number" name="pos_Y_apres_Deplacer" min="0" max="6"> </p>
      <input type="submit">
+
+<?php  }?>
 
      </form>
 

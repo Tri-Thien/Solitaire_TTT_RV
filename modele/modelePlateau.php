@@ -54,7 +54,7 @@ class ModelePlateau{
             $_SESSION["plateau"][$xi-1][$yi] == 0;
           }
         }
-        return true;      
+        return true;
     }
     else{
       return false;
@@ -73,7 +73,7 @@ class ModelePlateau{
             return true;
           }
           else{
-            return false
+            return false;
           }
         }
         elseif ($yi - $yf == -2 ) {
@@ -81,7 +81,7 @@ class ModelePlateau{
             return true;
           }
           else{
-            return false
+            return false;
           }
         }
         else{
@@ -94,7 +94,7 @@ class ModelePlateau{
             return true;
           }
           else{
-            return false
+            return false;
           }
         }
         elseif ($xi - $xf == -2 ) {
@@ -102,7 +102,7 @@ class ModelePlateau{
             return true;
           }
           else{
-            return false
+            return false;
           }
         }
         else{
