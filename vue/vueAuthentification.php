@@ -1,5 +1,4 @@
 <?php
-require_once PATH_METIER."/Message.php";
 
 class VueAuthentification{
 

@@ -63,7 +63,8 @@ public function deconnexion(){
 //retourne un tableau à une dimension qui contient les pseudos.
 // si un problème est rencontré, une exception de type TableAccesException est levée
 
-public function getPseudos(){
+public function getMdp($pseudo){
+
  try{
 
 $statement=$this->connexion->query("SELECT pseudo from pseudonyme;");
@@ -138,29 +139,6 @@ public function majSalon($pseudo,$message){
 
 
 
-
-
-//A développer
-//utiliser une requête classique
-// méthode qui permet de récupérer les 10 derniers messages émis sur le salon
-// post-condition:
-//retourne un tableau qui contient des objets de type Message (script de la classe Message dans le répertoire métier)
-// c'est en fait simplement le résultat de l'application de la méthode fetchAll() avec le bon paramètre
-// si un problème est rencontré, une exception de type TableAccesException est levée
-
-public function get10RecentMessage(){
-
-try{
-$statement=$this->connexion->query("SELECT pseudonyme.pseudo ,salon.message FROM salon, pseudonyme where salon.idpseudo=pseudonyme.id ORDER BY salon.id DESC LIMIT 0, 10;");
-
-	return($statement->fetchAll(PDO::FETCH_CLASS, "Message"));
-
-    }
-  catch(PDOException $e){
-    $this->deconnexion();
-    throw new TableAccesException("problème avec la table salon");
-  }
-}
 
 
 }
