@@ -60,6 +60,7 @@ class ModelePlateau{
             $_SESSION["plateau"][$xf-1][$yi] = 0;
           }
         }
+        $this->finirDeplacement();
         return true;
     }
     else{
@@ -69,59 +70,105 @@ class ModelePlateau{
   }
 
   public function verifierDeplacement($xi, $yi, $xf, $yf){
-    echo "xi:".$xi."yi:".$yi."xf:".$xf."yf:".$yf;
-    if (($_SESSION["plateau"][$xi][$yi] == 1) && ($_SESSION["plateau"][$xf][$yf] == 0)) {
-      if ($xi != $xf && $yi != $yf) {
+    if (!($xi < 0 || $xi > 6 || $xf < 0 || $xf > 6 || $yi < 0 || $yi > 6 || $yf < 0 || $yf > 6 )) {
+      if (($_SESSION["plateau"][$xi][$yi] == 1) && ($_SESSION["plateau"][$xf][$yf] == 0)) {
+        if ($xi != $xf && $yi != $yf) {
+          return false;
+        }
+        elseif ($xi == $xf) {
+          if ($yi - $yf == 2 ) {
+            if (($_SESSION["plateau"][$xi][$yi-1] == 1)) {
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+          elseif ($yi - $yf == -2 ) {
+            if (($_SESSION["plateau"][$xi][$yf-1] == 1)) {
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+          else{
+            return false;
+          }
+        }
+        elseif ($yi == $yf) {
+          if ($xi - $xf == 2 ) {
+            if (($_SESSION["plateau"][$xi-1][$yf] == 1)) {
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+          elseif ($xi - $xf == -2 ) {
+            if (($_SESSION["plateau"][$xf-1][$yi] == 1)) {
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+          else{
+            return false;
+          }
+        }
+
+      }
+      else {
         return false;
       }
-      elseif ($xi == $xf) {
-        if ($yi - $yf == 2 ) {
-          if (($_SESSION["plateau"][$xi][$yi-1] == 1)) {
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        elseif ($yi - $yf == -2 ) {
-          if (($_SESSION["plateau"][$xi][$yf-1] == 1)) {
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        else{
-          return false;
-        }
-      }
-      elseif ($yi == $yf) {
-        if ($xi - $xf == 2 ) {
-          if (($_SESSION["plateau"][$xi-1][$yf] == 1)) {
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        elseif ($xi - $xf == -2 ) {
-          if (($_SESSION["plateau"][$xf-1][$yi] == 1)) {
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        else{
-          return false;
-        }
-      }
-
     }
     else {
       return false;
     }
   }
+
+  public function finirDeplacement(){
+    if ($this->verifierGagner()) {
+      $_SESSION["gagner"] = true;
+    }
+    elseif ($this->verifierPerdre()) {
+      $_SESSION["perdu"] = true;
+    }
+    else {
+      $_SESSION["gagner"] = false;
+      $_SESSION["perdu"] = false;
+    }
+  }
+
+  public function verifierGagner(){
+    $res = 0;
+    for ($i=0; $i < 7; $i++) {
+      for ($j=0; $j < 7; $j++) {
+        if ($_SESSION["plateau"][$i][$j] == 1) {
+          $res = $res + 1;
+        }
+      }
+    }
+    if ($res == 1) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public function verifierPerdre(){
+    for ($i=0; $i < 7; $i++) {
+      for ($j=0; $j < 7; $j++) {
+        if ($this->verifierDeplacement($i, $j, $i+2, $j) || $this->verifierDeplacement($i, $j, $i-2, $j) || $this->verifierDeplacement($i, $j, $i, $j+2) || $this->verifierDeplacement($i, $j, $i, $j-2)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
 
 }
 

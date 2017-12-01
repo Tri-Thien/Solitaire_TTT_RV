@@ -31,6 +31,7 @@ function verifiePseudo($pseudo, $mdp){
   if ($this->modeleBD->verifMdp($pseudo,$mdp)) {
     $_SESSION["pseudo"] = $pseudo;
     $_SESSION["debut"] = true;
+    $_SESSION["depart"] = true;
     $this->modelePlateau->initialiserPlateau();
     $this->vueJeu->AffichageJeu();
   }

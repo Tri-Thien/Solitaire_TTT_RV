@@ -24,9 +24,11 @@ class Routeur {
     else if (isset($_POST["pos_X_Depart"]) && isset($_POST["pos_X_Depart"])) {
      $this->ctrlPlateau->enleverPion($_POST["pos_X_Depart"], $_POST["pos_Y_Depart"]);
     }
-    else if (isset($_POST["pos_X_avant_Deplacer"]) && isset($_POST["pos_Y_avant_Deplacer"])
-          && isset($_POST["pos_Y_apres_Deplacer"]) && isset($_POST["pos_Y_apres_Deplacer"]) ) {
-     $this->ctrlPlateau->deplacerPion($_POST["pos_X_avant_Deplacer"], $_POST["pos_Y_avant_Deplacer"],$_POST["pos_X_apres_Deplacer"],$_POST["pos_Y_apres_Deplacer"]);
+    else if (isset($_POST["pos_X_avant_Deplacer"]) && isset($_POST["pos_Y_avant_Deplacer"])) {
+     $this->ctrlPlateau->preparerPion($_POST["pos_X_avant_Deplacer"], $_POST["pos_Y_avant_Deplacer"]);
+    }
+    else if (isset($_POST["pos_X_apres_Deplacer"]) && isset($_POST["pos_Y_apres_Deplacer"])) {
+     $this->ctrlPlateau->deplacerPion($_POST["pos_X_apres_Deplacer"], $_POST["pos_Y_apres_Deplacer"]);
     }
     else {$this->ctrlAuthentification->accueil();}
  }
