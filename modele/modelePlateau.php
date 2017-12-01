@@ -24,7 +24,7 @@ class ModelePlateau{
   }
 
   public function enlever1erPion($x, $y){
-    if (($i == 0 || $i == 1 || $i == 5 || $i == 6)&&($j == 0 || $j == 1 || $j == 5 || $j == 6)) {
+    if (($x == 0 || $x == 1 || $x == 5 || $x == 6)&&($y == 0 || $y == 1 || $y == 5 || $y == 6)) {
       return false;
     }
     $_SESSION["plateau"][$x][$y] = 0;
@@ -36,26 +36,28 @@ class ModelePlateau{
     if ($this->verifierDeplacement($xi, $yi, $xf, $yf)) {
         if ($xi == $xf) {
           if ($yi - $yf == 2 ) {
-            $_SESSION["plateau"][$xi][$yi] == 0;
-            $_SESSION["plateau"][$xf][$yf] == 1;
-            $_SESSION["plateau"][$xi][$yf-1] == 0;
+            $_SESSION["plateau"][$xi][$yi] = 0;
+            $_SESSION["plateau"][$xf][$yf] = 1;
+            $_SESSION["plateau"][$xi][$yi-1] = 0;
           }
           elseif ($yi - $yf == -2 ) {
-            $_SESSION["plateau"][$xi][$yi] == 0;
-            $_SESSION["plateau"][$xf][$yf] == 1;
-            $_SESSION["plateau"][$xi][$yi-1] == 0;
+            $_SESSION["plateau"][$xi][$yi] = 0;
+            $_SESSION["plateau"][$xf][$yf] = 1;
+            $_SESSION["plateau"][$xi][$yf-1] = 0;
           }
         }
         elseif ($yi == $yf) {
+          echo "oui2";
           if ($xi - $xf == 2 ) {
-            $_SESSION["plateau"][$xi][$yi] == 0;
-            $_SESSION["plateau"][$xf][$yf] == 1;
-            $_SESSION["plateau"][$xf-1][$yf] == 0;
+            $_SESSION["plateau"][$xi][$yi] = 0;
+            $_SESSION["plateau"][$xf][$yf] = 1;
+            $_SESSION["plateau"][$xi-1][$yf] = 0;
           }
-          elseif ($yi - $yf == -2 ) {
-            $_SESSION["plateau"][$xi][$yi] == 0;
-            $_SESSION["plateau"][$xf][$yf] == 1;
-            $_SESSION["plateau"][$xi-1][$yi] == 0;
+          elseif ($xi - $xf == -2 ) {
+            echo "oui3";
+            $_SESSION["plateau"][$xi][$yi] = 0;
+            $_SESSION["plateau"][$xf][$yf] = 1;
+            $_SESSION["plateau"][$xf-1][$yi] = 0;
           }
         }
         return true;
@@ -67,13 +69,14 @@ class ModelePlateau{
   }
 
   public function verifierDeplacement($xi, $yi, $xf, $yf){
+    echo "xi:".$xi."yi:".$yi."xf:".$xf."yf:".$yf;
     if (($_SESSION["plateau"][$xi][$yi] == 1) && ($_SESSION["plateau"][$xf][$yf] == 0)) {
       if ($xi != $xf && $yi != $yf) {
         return false;
       }
       elseif ($xi == $xf) {
         if ($yi - $yf == 2 ) {
-          if (($_SESSION["plateau"][$xi][$yf-1] == 1)) {
+          if (($_SESSION["plateau"][$xi][$yi-1] == 1)) {
             return true;
           }
           else{
@@ -81,7 +84,7 @@ class ModelePlateau{
           }
         }
         elseif ($yi - $yf == -2 ) {
-          if (($_SESSION["plateau"][$xi][$yi-1] == 1)) {
+          if (($_SESSION["plateau"][$xi][$yf-1] == 1)) {
             return true;
           }
           else{
@@ -94,7 +97,7 @@ class ModelePlateau{
       }
       elseif ($yi == $yf) {
         if ($xi - $xf == 2 ) {
-          if (($_SESSION["plateau"][$xf-1][$yf] == 1)) {
+          if (($_SESSION["plateau"][$xi-1][$yf] == 1)) {
             return true;
           }
           else{
@@ -102,7 +105,7 @@ class ModelePlateau{
           }
         }
         elseif ($xi - $xf == -2 ) {
-          if (($_SESSION["plateau"][$xi-1][$yi] == 1)) {
+          if (($_SESSION["plateau"][$xf-1][$yi] == 1)) {
             return true;
           }
           else{

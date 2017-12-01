@@ -2,8 +2,11 @@
 
 class VueJeu{
 
+
+
+
 function AffichageJeu(){
-header("Content-type: text/html; charset=utf-8");
+
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +22,8 @@ header("Content-type: text/html; charset=utf-8");
 
   <?php
 
-  for ($i=0; $i < 7; $i++) {
-    for ($j=0; $j < 7 ; $j++) {
+  for ($j=0; $j < 7; $j++) {
+    for ($i=0; $i < 7 ; $i++) {
       if ( $_SESSION['plateau'][$i][$j] == 1 ) {
         ?>  <img src="https://i.skyrock.net/4061/68024061/pics/2757148448_small_1.jpg" alt="tofu" height="50" width="50"/>  <?php
       }
@@ -42,8 +45,8 @@ header("Content-type: text/html; charset=utf-8");
 
    <br/>
    Insérer le 1er poussin jaune à retirer : <br/>
-   <p> pos X <input type="number" name="pos_X_Depart" min="0" max="6"> </p>
-   <p> pos Y <input type="number" name="pos_Y_Depart" min="0" max="6"> </p>
+   <p> pos X <input type="number" name="pos_X_Depart" min="0" max="6" required> </p>
+   <p> pos Y <input type="number" name="pos_Y_Depart" min="0" max="6" required> </p>
    <input type="submit">
 
    </form>
@@ -54,12 +57,12 @@ header("Content-type: text/html; charset=utf-8");
 
      <br/>
      Quel poussin jaune voulez-vous déplacer? : <br/>
-     <p> pos X <input type="number" name="pos_X_avant_Deplacer" min="0" max="6"> </p>
-     <p> pos Y <input type="number" name="pos_Y_avant_Deplacer" min="0" max="6"> </p>
+     <p> pos X <input type="number" name="pos_X_avant_Deplacer" min="0" max="6" required> </p>
+     <p> pos Y <input type="number" name="pos_Y_avant_Deplacer" min="0" max="6" required> </p>
      <br/>
      Vers où voulez-vous le déplacer? : <br/>
-     <p> pos X <input type="number" name="pos_X_apres_Deplacer" min="0" max="6"> </p>
-     <p> pos Y <input type="number" name="pos_Y_apres_Deplacer" min="0" max="6"> </p>
+     <p> pos X <input type="number" name="pos_X_apres_Deplacer" min="0" max="6" required> </p>
+     <p> pos Y <input type="number" name="pos_Y_apres_Deplacer" min="0" max="6" required> </p>
      <input type="submit">
 
 <?php  }?>
