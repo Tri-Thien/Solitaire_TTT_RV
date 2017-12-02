@@ -17,6 +17,8 @@ $this->modeleBD=new ModeleBD();
 }
 
 function affichage($pseudo,$resultat){
+	$_SESSION["pseudo"]=$pseudo;
+	$_SESSION["partieGagne"]=$resultat;
     $this->modeleBD->majParties($pseudo,$resultat);
     $this->vueResultat->affichageResultat($this->modeleBD->getPartiesJoue($pseudo),$this->modeleBD->getPartiesGagne($pseudo));
 

@@ -3,8 +3,6 @@
 class VueResultat{
 
 function affichageResultat($tabJoue,$tabGagne){
-session_destroy();
-header("Content-type: text/html; charset=utf-8");
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +15,18 @@ header("Content-type: text/html; charset=utf-8");
 
 
   <h2>Résultat de la partie.</h2>
+
+  <?php 
+  	if ($_SESSION["partieGagne"] == false) {
+  		echo "<p> Vous avez perdu, dommage ".$_SESSION["pseudo"]."! </p>";
+  	}
+   ?>
 <br>
 <br>
 
 <?php
 echo "Nombre de parties jouées : ".$tabJoue['count(*)'];
+echo "<br/>"
 echo "Nombre de parties gagnées : ".$tabGagne['sum(partieGagnee)'];
  ?>
 
