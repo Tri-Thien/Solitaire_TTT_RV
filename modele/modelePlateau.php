@@ -47,14 +47,12 @@ class ModelePlateau{
           }
         }
         elseif ($yi == $yf) {
-          echo "oui2";
           if ($xi - $xf == 2 ) {
             $_SESSION["plateau"][$xi][$yi] = 0;
             $_SESSION["plateau"][$xf][$yf] = 1;
             $_SESSION["plateau"][$xi-1][$yf] = 0;
           }
           elseif ($xi - $xf == -2 ) {
-            echo "oui3";
             $_SESSION["plateau"][$xi][$yi] = 0;
             $_SESSION["plateau"][$xf][$yf] = 1;
             $_SESSION["plateau"][$xf-1][$yi] = 0;

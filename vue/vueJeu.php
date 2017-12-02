@@ -27,9 +27,10 @@ function AffichageJeu(){
 			if ($_SESSION["debut"]) {
 				?>
 				<form method="post" action="index.php" style="display:inline;">
-
+          <span style="display:none;">
 						<input type="checkbox" name="pos_X_Depart" value="<?php echo $i ?>" checked>
 						<input type="checkbox" name="pos_Y_Depart" value="<?php echo $j ?>" checked>
+          </span>
 
 				<?php
 			}
