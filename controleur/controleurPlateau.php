@@ -37,6 +37,7 @@ function preparerPion($xi, $yi){
 }
 
 function deplacerPion($xf,$yf){
+  echo "xi:".$_SESSION["xi"]."yi:".$_SESSION["yi"]."xf:".$xf."yf:".$yf;
   if ($this->modelePlateau->deplacerPion($_SESSION["xi"],$_SESSION["yi"],$xf,$yf)) {
     if ($_SESSION["gagner"]) {
       echo "gg";

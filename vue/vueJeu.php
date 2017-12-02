@@ -26,7 +26,7 @@ function AffichageJeu(){
     for ($i=0; $i < 7 ; $i++) {
 			if ($_SESSION["debut"]) {
 				?>
-				<form method="post" action="index.php">
+				<form method="post" action="index.php" style="display:inline;">
 
 						<input type="checkbox" name="pos_X_Depart" value="<?php echo $i ?>" checked>
 						<input type="checkbox" name="pos_Y_Depart" value="<?php echo $j ?>" checked>
@@ -35,7 +35,7 @@ function AffichageJeu(){
 			}
 			elseif ($_SESSION["depart"]) {
 				?>
-				<form method="post" action="index.php">
+				<form method="post" action="index.php" style="display:inline;">
 					<span style="display:none;">
 						<input type="checkbox" name="pos_X_avant_Deplacer" value="<?php echo $i ?>" checked>
 						<input type="checkbox" name="pos_Y_avant_Deplacer" value="<?php echo $j ?>" checked>
@@ -44,7 +44,7 @@ function AffichageJeu(){
 			}
 			else {
 				?>
-				<form method="post" action="index.php">
+				<form method="post" action="index.php" style="display:inline;">
 					<span style="display:none;">
 						<input type="checkbox" name="pos_X_apres_Deplacer" value="<?php echo $i ?>" checked>
 						<input type="checkbox" name="pos_Y_apres_Deplacer" value="<?php echo $j ?>" checked>

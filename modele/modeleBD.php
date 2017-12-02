@@ -122,7 +122,7 @@ public function majParties($pseudo,$resultat){
 	}
     catch(PDOException $e){
     $this->deconnexion();
-    throw new TableAccesException("problème avec la table parties);
+    throw new TableAccesException("problème avec la table parties");
     }
 }
 
