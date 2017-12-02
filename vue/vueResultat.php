@@ -20,13 +20,16 @@ function affichageResultat($tabJoue,$tabGagne){
   	if ($_SESSION["partieGagne"] == false) {
   		echo "<p> Vous avez perdu, dommage ".$_SESSION["pseudo"]."! </p>";
   	}
+  	else {
+  		echo "<p> Vous avez gagné, bravo ".$_SESSION["pseudo"]."! </p>";
+  	}
    ?>
 <br>
 <br>
 
 <?php
 echo "Nombre de parties jouées : ".$tabJoue['count(*)'];
-echo "<br/>"
+echo "<br/>";
 echo "Nombre de parties gagnées : ".$tabGagne['sum(partieGagnee)'];
  ?>
 
