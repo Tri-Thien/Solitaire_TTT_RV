@@ -40,16 +40,14 @@ function preparerPion($xi, $yi){
 function deplacerPion($xf,$yf){
   if ($this->modelePlateau->deplacerPion($_SESSION["xi"],$_SESSION["yi"],$xf,$yf)) {
     if ($_SESSION["gagner"]) {
-      echo "gg";
       $_SESSION["partieGagne"] = true;
       $this->modeleBD->majParties($_SESSION["pseudo"],$_SESSION["partieGagne"]);
-      $this->vueResultat->affichageResultat($this->modeleBD->getPartiesJoue($_SESSION["pseudo"]),$this->modeleBD->getPartiesGagne($_SESSION["pseudo"]));
+      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]));
     }
     elseif ($_SESSION["perdu"]) {
-      echo "perdu";
       $_SESSION["partieGagne"] = false;
       $this->modeleBD->majParties($_SESSION["pseudo"],$_SESSION["partieGagne"]);
-      $this->vueResultat->affichageResultat($this->modeleBD->getPartiesJoue($_SESSION["pseudo"]),$this->modeleBD->getPartiesGagne($_SESSION["pseudo"]));
+      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]));
     }
     else {
       $_SESSION["depart"] = true;

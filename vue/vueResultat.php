@@ -2,7 +2,7 @@
 
 class VueResultat{
 
-function affichageResultat($tabJoue,$tabGagne){
+function affichageResultat($tabStats){
 ?>
 
 <!DOCTYPE html>
@@ -24,14 +24,23 @@ function affichageResultat($tabJoue,$tabGagne){
   		echo "<p> Vous avez gagné, bravo ".$_SESSION["pseudo"]."! </p>";
   	}
    ?>
-<br>
-<br>
+
+   <h2>Statistiques du joueur.</h2>
 
 <?php
-echo "Nombre de parties jouées : ".$tabJoue['count(*)'];
-echo "<br/>";
-echo "Nombre de parties gagnées : ".$tabGagne['sum(partieGagnee)'];
+$joueur=$tabStats["pseudo"];
+$nbJoue=$tabStats["count(*)"];
+$nbGagne=$tabStats["sum(partieGagnee)"];
+
+echo "<p>Pseudo: ".$joueur."</p>";
+echo "<p>Nombre de parties au total: ".$nbJoue."</p>";
+echo "<p>Nombre de parties gagnées: ".$nbGagne."</p>";
+
  ?>
+
+   <h2>Classement des 3 meilleurs joueurs.</h2>
+
+
 
 </body>
 </html>

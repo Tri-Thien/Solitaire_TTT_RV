@@ -77,25 +77,11 @@ public function verifMdp($pseudo,$mdp){
 }
 
 
-public function getPartiesJoue($pseudo){
+
+
+public function getStats($pseudo){
   try{
-$statement = $this->connexion->prepare("select count(*) from parties where pseudo=?;");
-$statement->bindParam(1, $pseudo);
-$statement->execute();
-$result=$statement->fetch(PDO::FETCH_ASSOC);
-return ($result);
-
-}
-catch(PDOException $e){
-$this->deconnexion();
-throw new TableAccesException("problème avec la table joueurs");
-}
-}
-
-
-public function getPartiesGagne($pseudo){
-  try{
-$statement = $this->connexion->prepare("select sum(partieGagnee) from parties where pseudo=?;");
+$statement = $this->connexion->prepare("select pseudo,sum(partieGagnee),count(*) from parties where pseudo=?;");
 $statement->bindParam(1, $pseudo);
 $statement->execute();
 $result=$statement->fetch(PDO::FETCH_ASSOC);
@@ -107,6 +93,7 @@ $this->deconnexion();
 throw new TableAccesException("problème avec la table parties");
 }
 }
+
 
 
 
@@ -128,6 +115,21 @@ public function majParties($pseudo,$resultat){
 
 
 
+/*
+public function get3MeilleursJoueurs(){
+  $requete = "select pseudo from parties where pseudonyme.id = salon.idpseudo order by salon.id DESC LIMIT 10;";
+  $statement=$this->connexion->query( $requete);
+  try {
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+
+  } 
+    catch (TableAccesException $e) {
+    echo $e;
+  }
+
+}
+*/
 
 
 
