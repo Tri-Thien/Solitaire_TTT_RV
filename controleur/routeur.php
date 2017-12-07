@@ -33,6 +33,12 @@ class Routeur {
     else if (isset($_POST["Retour_Arriere"])) {
      $this->ctrlPlateau->retourArriere();
     }
+    else if (isset($_POST["Recommencer"])) {
+      $this->ctrlPlateau->preparerPion($_POST["pos_X_avant_Deplacer"], $_POST["pos_Y_avant_Deplacer"]);
+    }
+    else if (isset($_POST["Deconnecter"])){
+      $this->ctrlAuthentification->accueil();
+    }
     else {$this->ctrlAuthentification->accueil();}
  }
 

@@ -54,8 +54,23 @@ foreach ($tabClassement as $row) {
   echo "<br/>Nb gagnées :".$row["sum(partieGagnee)"];
   echo "<br/>Ratio : ".$ratio2."% </p>";
 }
-
  ?>
+
+<form method="post" action="index.php" style="display:inline;">
+  <span style="display:none;">
+  <input type="checkbox" name="Recommencer" checked>
+  </span>
+  <input type="submit" value="Recommencer"/>
+</form>
+
+<form method="post" action="index.php" style="display:inline;">
+  <span style="display:none;">
+  <input type="checkbox" name="Deconnecter" checked>
+  </span>
+  <input type="submit" value="Deconnecter"/>
+</form>
+
+
 
 </body>
 </html>
