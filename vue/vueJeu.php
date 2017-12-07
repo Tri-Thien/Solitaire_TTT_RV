@@ -81,40 +81,17 @@ function AffichageJeu(){
 
    <!--Si début du jeu, il faut demander à retirer 1 tofu (pion)  -->
 
-	 <?php if ($_SESSION["debut"]) { ?>
-   <form method="post" action="index.php">
-
-   <br/>
-   Insérer le 1er poussin jaune à retirer : <br/>
-   <p> pos X <input type="number" name="pos_X_Depart" min="0" max="6" required> </p>
-   <p> pos Y <input type="number" name="pos_Y_Depart" min="0" max="6" required> </p>
-   <input type="submit">
-
-   </form>
-	 <?php }
-	 else {?>
-
-		     <form method="post" action="index.php">
-
-     <br/>
-     Quel poussin jaune voulez-vous déplacer? : <br/>
-     <p> pos X <input type="number" name="pos_X_avant_Deplacer" min="0" max="6" required> </p>
-     <p> pos Y <input type="number" name="pos_Y_avant_Deplacer" min="0" max="6" required> </p>
-     <br/>
-     Vers où voulez-vous le déplacer? : <br/>
-     <p> pos X <input type="number" name="pos_X_apres_Deplacer" min="0" max="6" required> </p>
-     <p> pos Y <input type="number" name="pos_Y_apres_Deplacer" min="0" max="6" required> </p>
-     <input type="submit">
-
-<?php  }?>
-
-     </form>
-
-
-
-
-
-
+<form action="index.html" method="post">
+  <span style="display:none;">
+     <input type="checkbox" name="Retour_Arriere" value="yes" checked>
+  </span>
+  <input type="submit" value="Annuler le coup précédent" 
+  <?php
+    if ($_SESSION["debut"] || $_SESSION["retour"]) {
+      echo "disabled";
+    }
+  ?>/>
+</form>
 
 
 

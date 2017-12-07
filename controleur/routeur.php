@@ -30,6 +30,9 @@ class Routeur {
     else if (isset($_POST["pos_X_apres_Deplacer"]) && isset($_POST["pos_Y_apres_Deplacer"])) {
      $this->ctrlPlateau->deplacerPion($_POST["pos_X_apres_Deplacer"], $_POST["pos_Y_apres_Deplacer"]);
     }
+    else if (isset($_POST["Retour_Arriere"])) {
+     $this->ctrlPlateau->retourArriere();
+    }
     else {$this->ctrlAuthentification->accueil();}
  }
 
