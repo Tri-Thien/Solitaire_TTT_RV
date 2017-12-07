@@ -94,6 +94,19 @@ function AffichageJeu(){
   ?>/>
 </form>
 
+<form action="index.php" method="post">
+  <span style="display:none;">
+     <input type="checkbox" name="Reinitialiser_Plateau" value="yes" checked>
+  </span>
+  <input type="submit" value="Recommencer">
+</form>
+<form method="post" action="index.php" style="display:inline;">
+  <span style="display:none;">
+  <input type="checkbox" name="Deconnecter" checked>
+  </span>
+  <input type="submit" value="Deconnecter"/>
+</form>
+
 
 
 </body>

@@ -68,7 +68,11 @@ function retourArriere(){
   $_SESSION["retour"] = true;
   $_SESSION["depart"] = true;
   $this->vueJeu->AffichageJeu();
+}
 
+function reinitialiserPlateau(){
+  $this->modelePlateau->initialiserPlateau();
+  $this->vueJeu->AffichageJeu();
 }
 
 

@@ -58,7 +58,7 @@ foreach ($tabClassement as $row) {
 
 <form method="post" action="index.php" style="display:inline;">
   <span style="display:none;">
-  <input type="checkbox" name="Recommencer" checked>
+  <input type="checkbox" name="Reinitialiser_Plateau" checked>
   </span>
   <input type="submit" value="Recommencer"/>
 </form>
