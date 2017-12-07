@@ -101,7 +101,7 @@ throw new TableAccesException("problème avec la table parties");
 public function majParties($pseudo,$resultat){
 
       try{
-	$statement = $this->connexion->prepare("INSERT INTO parties (pseudo,partieGagnee) VALUES (?,?);");
+	$statement = $this->connexion->prepare("insert into parties (pseudo,partieGagnee) values (?,?);");
 	$statement->bindParam(1, $pseudo);
 	$statement->bindParam(2, $resultat);
 	$statement->execute();
@@ -123,14 +123,49 @@ public function get3MeilleursJoueurs(){
     return $result;
 
   }
-    catch (TableAccesException $e) {
-    echo $e;
+    catch(PDOException $e){
+    $this->deconnexion();
+    throw new TableAccesException("problème avec la table parties");
+    }
   }
 
+
+
+public function inscriptionJoueur($pseudo,$mdp){
+  try{
+  $mdpCrypte = crypt($mdp);
+  $statement = $this->connexion->prepare("insert into joueurs (pseudo,motDePasse) values (?,?);");
+  $statement->bindParam(1, $pseudo);
+  $statement->bindParam(2, $mdpCrypte);
+  $statement->execute();
+  }
+    catch(PDOException $e){
+    $this->deconnexion();
+    throw new TableAccesException("problème avec la table joueurs");
+    }
 }
 
 
+public function existsJoueur($pseudo){
+      try{
+  $statement = $this->connexion->prepare("select pseudo from joueurs where pseudo=?;");
+  $statement->bindParam(1, $pseudo);
+  $statement->execute();
+  $result=$statement->fetch(PDO::FETCH_ASSOC);
 
+
+  if (isset($result["pseudo"])) {
+    return true;
+  }
+  else{
+    return false;
+  }
+  }
+    catch(PDOException $e){
+    $this->deconnexion();
+    throw new TableAccesException("problème avec la table joueurs");
+    }
+}
 
 }
 

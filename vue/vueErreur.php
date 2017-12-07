@@ -15,13 +15,28 @@ header("Content-type: text/html; charset=utf-8");
 </head>
 <body>
 
-  <form method="post" action="index.php">
 
-  <p>Il y a une erreur d'authentification.</p>
+	<?php
+	if ($_SESSION["erreur"]=="connexion") {
+		echo "<p> Mauvais pseudo ou mot de passe, veuillez recommencer ou vous inscrire. </p>";
+	}
+	else if ($_SESSION["erreur"]=="inscription"){
+		echo "<p> Le pseudo existe déjà, veuillez prendre un autre pseudo. </p>";
+	}
+	
+	?>
 
+
+  <form method="post" action="index.php" style="display:inline;">
   <input type="submit" name="retour" value="Retour à la connexion."/>
-
   </form>
+
+  <form method="post" action="index.php" style="display:inline;">
+  <span style="display:none;">
+  <input type="checkbox" name="Inscription" checked>
+  </span>
+  <input type="submit" value="Inscription."/>
+</form>
 
 </body>
 </html>

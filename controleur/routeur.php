@@ -2,17 +2,19 @@
 
 require_once 'controleurAuthentification.php';
 require_once 'controleurPlateau.php';
+require_once 'controleurInscription.php';
 
 class Routeur {
 
   private $ctrlAuthentification;
   private $ctrlPlateau;
-
+  private $ctrlInscription;
 
 
   public function __construct() {
     $this->ctrlAuthentification= new ControleurAuthentification();
     $this->ctrlPlateau= new ControleurPlateau();
+    $this->ctrlInscription=new ControleurInscription();
   }
 
   // Traite une requête entrante
@@ -38,6 +40,12 @@ class Routeur {
     }
     else if (isset($_POST["Reinitialiser_Plateau"])){
       $this->ctrlPlateau->reinitialiserPlateau();
+    }
+    else if (isset($_POST["Inscription"])){
+      $this->ctrlInscription->accueil();
+    }
+    else if (isset($_POST["iPseudo"]) && isset($_POST["iMdp"])){
+      $this->ctrlInscription->inscrireCompte($_POST["iPseudo"],$_POST["iMdp"]);
     }
     else {$this->ctrlAuthentification->accueil();}
  }

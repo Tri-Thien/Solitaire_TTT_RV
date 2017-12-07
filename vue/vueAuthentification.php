@@ -15,7 +15,14 @@ header("Content-type: text/html; charset=utf-8");
 </head>
 <body>
 
-  <form method="post" action="index.php">
+  <?php
+    if (isset($_POST["iPseudo"]) && isset($_POST["iMdp"])) {
+      echo "<p> Vous vous êtes bien inscrit ".$_POST["iPseudo"]." ! </p>";
+    }
+
+  ?>
+
+  <form method="post" action="index.php" >
 
   Entrer votre pseudo  <input type="text" name="pseudo"/>
   </br>
@@ -25,6 +32,14 @@ header("Content-type: text/html; charset=utf-8");
   <input type="submit" name="soumettre" value="envoyer"/>
 
   </form>
+
+<br/>
+<form method="post" action="index.php" style="display:inline;">
+  <span style="display:none;">
+  <input type="checkbox" name="Inscription" checked>
+  </span>
+  <input type="submit" value="Pas encore de compte? Clique ici !"/>
+</form>
 
 </body>
 </html>

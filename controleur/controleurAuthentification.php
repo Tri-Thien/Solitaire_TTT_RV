@@ -34,9 +34,12 @@ function verifiePseudo($pseudo, $mdp){
     $this->vueJeu->AffichageJeu();
   }
   else{
+  	$_SESSION["erreur"] = "connexion";
     $this->vueErreur->affichageErreur();
   }
 }
+
+
 
 
 }
