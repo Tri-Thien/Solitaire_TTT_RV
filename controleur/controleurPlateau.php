@@ -42,12 +42,12 @@ function deplacerPion($xf,$yf){
     if ($_SESSION["gagner"]) {
       $_SESSION["partieGagne"] = true;
       $this->modeleBD->majParties($_SESSION["pseudo"],$_SESSION["partieGagne"]);
-      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]));
+      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]),$this->modeleBD->get3MeilleursJoueurs());
     }
     elseif ($_SESSION["perdu"]) {
       $_SESSION["partieGagne"] = false;
       $this->modeleBD->majParties($_SESSION["pseudo"],$_SESSION["partieGagne"]);
-      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]));
+      $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]),$this->modeleBD->get3MeilleursJoueurs());
     }
     else {
       $_SESSION["depart"] = true;

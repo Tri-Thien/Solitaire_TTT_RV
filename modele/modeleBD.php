@@ -81,7 +81,7 @@ public function verifMdp($pseudo,$mdp){
 
 public function getStats($pseudo){
   try{
-$statement = $this->connexion->prepare("select pseudo,sum(partieGagnee),count(*) from parties where pseudo=?;");
+$statement = $this->connexion->prepare("select pseudo,sum(partieGagnee),count(*),(sum(PartieGagnee) / count(*)) as ratio from parties where pseudo=?;");
 $statement->bindParam(1, $pseudo);
 $statement->execute();
 $result=$statement->fetch(PDO::FETCH_ASSOC);
@@ -115,21 +115,20 @@ public function majParties($pseudo,$resultat){
 
 
 
-/*
 public function get3MeilleursJoueurs(){
-  $requete = "select pseudo from parties where pseudonyme.id = salon.idpseudo order by salon.id DESC LIMIT 10;";
+  $requete = "select pseudo,sum(partieGagnee),count(*),(sum(PartieGagnee) / count(*)) as ratio from parties group by pseudo order by 4 DESC LIMIT 3;";
   $statement=$this->connexion->query( $requete);
   try {
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 
-  } 
+  }
     catch (TableAccesException $e) {
     echo $e;
   }
 
 }
-*/
+
 
 
 
