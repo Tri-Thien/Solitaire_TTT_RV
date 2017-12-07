@@ -10,7 +10,7 @@ class ModelePlateau{
 
   public function initialiserPlateau(){
 
-    for ($i=0; $i < 7; $i++) {
+    /*for ($i=0; $i < 7; $i++) {
       for ($j=0; $j < 7; $j++) {
         if (($i == 0 || $i == 1 || $i == 5 || $i == 6)&&($j == 0 || $j == 1 || $j == 5 || $j == 6)) {
           $_SESSION["plateau"][$i][$j] = -1;
@@ -19,7 +19,22 @@ class ModelePlateau{
           $_SESSION["plateau"][$i][$j] = 1;
         }
       }
-    }
+    }*/
+    $_SESSION["plateau"] = array();
+
+    $_SESSION["plateau"][0] = array(-1,-1,0,0,0,-1,-1);
+    $_SESSION["plateau"][1] = array(-1,-1,0,0,0,-1,-1);
+    $_SESSION["plateau"][2] = array( 0, 0,1,1,1, 0, 0);
+    $_SESSION["plateau"][3] = array( 0, 0,0,1,0, 0, 0);
+    $_SESSION["plateau"][4] = array( 0, 0,0,1,0, 0, 0);
+    $_SESSION["plateau"][5] = array(-1,-1,0,0,0,-1,-1);
+    $_SESSION["plateau"][6] = array(-1,-1,0,0,0,-1,-1);
+
+
+
+    $_SESSION["debut"] = true;
+    $_SESSION["depart"] = true;
+    $_SESSION["retour"] = true;
     $_SESSION["debut"] = true;
   }
 

@@ -38,6 +38,7 @@ function preparerPion($xi, $yi){
 }
 
 function deplacerPion($xf,$yf){
+  $_SESSION["plateauAncien"] = $_SESSION["plateau"];
   if ($this->modelePlateau->deplacerPion($_SESSION["xi"],$_SESSION["yi"],$xf,$yf)) {
     if ($_SESSION["gagner"]) {
       $_SESSION["partieGagne"] = true;
@@ -50,6 +51,7 @@ function deplacerPion($xf,$yf){
       $this->vueResultat->affichageResultat($this->modeleBD->getStats($_SESSION["pseudo"]),$this->modeleBD->get3MeilleursJoueurs());
     }
     else {
+      $_SESSION["retour"] = false;
       $_SESSION["depart"] = true;
       $this->vueJeu->AffichageJeu();
     }
@@ -59,6 +61,14 @@ function deplacerPion($xf,$yf){
     $_SESSION["depart"] = true;
     $this->vueJeu->AffichageJeu();
   }
+}
+
+function retourArriere(){
+  $_SESSION["plateau"] = $_SESSION["plateauAncien"];
+  $_SESSION["retour"] = true;
+  $_SESSION["depart"] = true;
+  $this->vueJeu->AffichageJeu();
+
 }
 
 
