@@ -24,10 +24,10 @@ header("Content-type: text/html; charset=utf-8");
 
   <form method="post" action="index.php" >
 
-  Entrer votre pseudo  <input type="text" name="pseudo"/>
+  Entrer votre pseudo  <input type="text" name="pseudo" required/>
   </br>
   </br>
-  Entrer votre mdp <input type="password" name ="mdp"/>
+  Entrer votre mdp <input type="password" name ="mdp" required/>
   </br>
   <input type="submit" name="soumettre" value="envoyer"/>
 

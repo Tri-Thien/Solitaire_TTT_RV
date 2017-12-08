@@ -19,10 +19,10 @@ header("Content-type: text/html; charset=utf-8");
 
   <form method="post" action="index.php" style="display:inline;">
 
-  Pseudo : <input type="text" name="iPseudo"/>
+  Pseudo : <input type="text" name="iPseudo" required/>
   </br>
   </br>
-  Mot de passe : <input type="password" name ="iMdp"/>
+  Mot de passe : <input type="password" name ="iMdp" required/>
   </br>
   </br>
   <input type="submit" name="sinscrire" value="S'inscrire !"/>
