@@ -54,23 +54,23 @@ function AffichageJeu(){
 			}
     	if ( $_SESSION['plateau'][$i][$j] == 1 ) {
         if ($_SESSION["depart"]) {
-          ?>  <input type="image" name="submit" src="https://i.skyrock.net/4061/68024061/pics/2757148448_small_1.jpg" height="50" width="50" border="0" alt="Submit" /> <?php
+          ?>  <input type="image" name="submit" src="vue/img/tofu.jpg" height="50" width="50" border="0" alt="Submit" /> <?php
         }
         else{
-          ?>  <image src="https://i.skyrock.net/4061/68024061/pics/2757148448_small_1.jpg" height="50" width="50" alt="poussin"></image> <?php
+          ?>  <img src="vue/img/tofu.jpg" height="50" width="50" alt="poussin"/> <?php
         }
         
       }
       else if ( $_SESSION['plateau'][$i][$j] == 0 ) {
         if (!($_SESSION["depart"])) {
-          ?>  <input type="image" name="submit" src="https://previews.123rf.com/images/mironovak/mironovak1306/mironovak130600018/20240720-seule-graine-de-citrouille-isol-sur-fond-blanc-Banque-d%27images.jpg" height="50" width="50" border="0" alt="Submit" /> <?php
+          ?>  <input type="image" name="submit" src="vue/img/graine.png" height="50" width="50" border="0" alt="Submit" /> <?php
         }
         else{
-          ?>  <image src="https://previews.123rf.com/images/mironovak/mironovak1306/mironovak130600018/20240720-seule-graine-de-citrouille-isol-sur-fond-blanc-Banque-d%27images.jpg" height="50" width="50" alt="graine"></image> <?php
+          ?>  <image src="vue/img/graine.png" height="50" width="50" alt="graine"></image> <?php
         }
       }
       else {
-        ?> <image src="http://www.annliz-bonin.com/wp-content/uploads/2017/05/carre%CC%81-blanc-300x300.png" height="50" width="50" alt="carre blanc"></image><?php
+        ?> <image src="vue/img/blanc.png" height="50" width="50" alt="carre blanc"></image><?php
       }
       
 			?></form><?php
