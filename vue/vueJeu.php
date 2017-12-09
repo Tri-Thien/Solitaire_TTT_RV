@@ -69,6 +69,14 @@ function AffichageJeu(){
           ?>  <image src="vue/img/graine.png" height="50" width="50" alt="graine"></image> <?php
         }
       }
+      else if ( $_SESSION['plateau'][$i][$j] == 2 ) {
+        if (!($_SESSION["depart"])) {
+          ?>  <input type="image" name="submit" src="vue/img/tofuNoir.png" height="50" width="50" border="0" alt="Submit" /> <?php
+        }
+        else{
+          ?>  <image src="vue/img/tofuNoir.png" height="50" width="50" alt="graine"></image> <?php
+        }
+      }
       else {
         ?> <image src="vue/img/blanc.png" height="50" width="50" alt="carre blanc"></image><?php
       }
@@ -79,8 +87,26 @@ function AffichageJeu(){
   }
    ?>
 <br/>
-<br/>
+
+<?php if ($_SESSION["faute"]) {
+  ?>  <h3 style="color:red;"> Déplacement impossible ! </h3> <?php 
+  $_SESSION["faute"] = false;
+}
+?>
+
    <!--Si début du jeu, il faut demander à retirer 1 tofu (pion)  -->
+<?php 
+if ($_SESSION["debut"]) {
+  ?>  <h3> Choisissez le premier pion à enlever </h3> <?php
+}
+else if ($_SESSION["depart"]) {
+  ?>  <h3> Choisissez le pion que vous voulez déplacer </h3> <?php
+}
+else{
+  ?>  <h3> Choisissez où vous voulez déplacer le pion </h3> <?php 
+} ?>
+
+<br/>
 
 <form action="index.php" method="post">
   <span style="display:none;">

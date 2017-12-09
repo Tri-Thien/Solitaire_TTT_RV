@@ -34,11 +34,13 @@ function preparerPion($xi, $yi){
   $_SESSION["xi"] = $xi;
   $_SESSION["yi"] = $yi;
   $_SESSION["depart"] = false;
+  $_SESSION["plateau"][$xi][$yi] = 2;
   $this->vueJeu->AffichageJeu();
 }
 
 function deplacerPion($xf,$yf){
   $_SESSION["plateauAncien"] = $_SESSION["plateau"];
+    $_SESSION["plateau"][$_SESSION["xi"]][$_SESSION["yi"]] = 1;
   if ($this->modelePlateau->deplacerPion($_SESSION["xi"],$_SESSION["yi"],$xf,$yf)) {
     if ($_SESSION["gagner"]) {
       $_SESSION["partieGagne"] = true;
@@ -58,6 +60,7 @@ function deplacerPion($xf,$yf){
 
   }
   else{
+    $_SESSION["faute"] = true;
     $_SESSION["depart"] = true;
     $this->vueJeu->AffichageJeu();
   }
