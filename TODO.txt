@@ -1,11 +1,11 @@
 Tout Doux :
 -Image en lien ddans un fiochier car pas bien sinon (*tousse* lien skyrock *tousse*) ---FAIT---
--Image de graine a retyoucher ? (graine plus petite)
--Lors de la selection d'un tofu le changer de couleur, peut etre montrer ou il peut aller -> chaud :/ et long surtout
-- un peu de css ?
+-Image de graine a retyoucher ? (graine plus petite) ---FAIT---
+-Lors de la selection d'un tofu le changer de couleur, peut etre montrer ou il peut aller -> chaud :/ et long surtout ---FAIT---
+- un peu de css ? ---PAS BIESON---
 
--Commentez le code !
--Compte rendu -_-
+-Commentez le code ! ---EN COURS---
+-Compte rendu -_- ---DEMAIN?---
 
 
 

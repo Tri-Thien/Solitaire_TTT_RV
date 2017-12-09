@@ -28,8 +28,7 @@ function demandePseudo(){
   <!-- Formulaire de connexion -->
   <form method="post" action="index.php" >
   <p> Entrer votre pseudo  <input type="text" name="pseudo" required/> </p>
-  </br>
-  </br>
+  
   <p> Entrer votre mdp <input type="password" name ="mdp" required/> </p>
   </br>
   <input type="submit" name="soumettre" value="envoyer"/>
