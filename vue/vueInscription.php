@@ -22,10 +22,8 @@ function inscription(){
   <!-- Formulaire d'inscription -->
   <form method="post" action="index.php" style="display:inline;">
   <p> Pseudo : <input type="text" name="iPseudo" required/> </p>
-  </br>
-  </br>
+
   <p> Mot de passe : <input type="password" name ="iMdp" required/> </p>
-  </br>
   </br>
   <input type="submit" name="sinscrire" value="S'inscrire !"/>
   </form>
