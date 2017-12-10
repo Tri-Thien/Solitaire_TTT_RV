@@ -31,7 +31,7 @@ function demandePseudo(){
   
   <p> Entrer votre mdp <input type="password" name ="mdp" required/> </p>
   </br>
-  <input type="submit" name="soumettre" value="envoyer"/>
+  <input type="submit" name="soumettre" value="Connexion"/>
   </form>
 
   <br/>
